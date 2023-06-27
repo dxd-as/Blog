@@ -64,4 +64,22 @@ export const deletePost = async (req, res) => {
 				error: err
 			});
 		});
-}
+};
+
+export const updatePost = async (req, res) => {
+	const id = req.params.id;
+	const { title, content, image } = req.body;
+	feedService.updateOneById(id, title, content, image)
+		.then((post) => {
+			return res.json({
+				msg: 'Post updated',
+				post
+			});
+		})
+		.catch((err) => {
+			return res.status(500).json({
+				msg: "Error. Can not update the post",
+				error: err
+			});
+		});
+};

@@ -25,4 +25,7 @@ export class feedServiceMySql {
 	removeOneById(id) {
 		return Post.destroy({ where: { id } });
 	}
+	updateOneById(id, title, content, image) {
+		return Post.update({ title, content, image }, { where: { id } });
+	}
 }

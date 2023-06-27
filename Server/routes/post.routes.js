@@ -12,7 +12,7 @@
  */
 
 import { Router } from 'express';
-import { deletePost, findAll, savePost } from '../Controllers/post.controller.js';
+import { deletePost, findAll, savePost, updatePost } from '../Controllers/post.controller.js';
 
 const router = Router();
 
@@ -21,7 +21,7 @@ router.route("/")
 	.get(findAll)
 
 router.route("/:id")
-	//.put(updatePost)
+	.patch(updatePost)
 	.delete(deletePost)
 
 export default router;
