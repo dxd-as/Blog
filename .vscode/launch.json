@@ -1,0 +1,48 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Front",
+			"url": "http://10.211.55.4:5501/Front/index.html",
+			"webRoot": "${workspaceFolder}/Front"
+		},
+		{
+			"name": "Server",
+			"program": "${workspaceFolder}/Server/app.js",
+			"request": "launch",
+			"skipFiles": ["<node_internals>/**"],
+			"runtimeArgs": ["./Server/node_modules/nodemon/bin/nodemon.js"],
+			"type": "node"
+		},
+		{
+			"name": "ReactNPM",
+			"request": "launch",
+			"type": "node",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": ["start"],
+			"cwd": "${workspaceFolder}/Client/app"
+		},
+		{
+			"name": "ReactChrome",
+			"request": "launch",
+			"type": "chrome",
+			"url": "http://10.211.55.4:3000",
+			"webRoot": "${workspaceFolder}/Client/app"
+		}
+	],
+	"compounds": [
+		{
+			"name": "Front + Server",
+			"configurations": ["Front", "Server"]
+		},
+		{
+			"name": "React + Server",
+			"configurations": ["ReactNPM", "ReactChrome", "Server"]
+		}
+	]
+}
