@@ -19,7 +19,6 @@ const feedService = new feedServiceMySql();
 
 export const savePost = async (req, res) => {
 	const post = new newPost(req.body);
-	console.log("TITLE -> " + req.body.title);
 	if (post.title === null || post.content === null || post.image === null) {
 		return res.status(400).json({
 			msg: 'Check input data'

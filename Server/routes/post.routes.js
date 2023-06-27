@@ -19,6 +19,8 @@ const router = Router();
 router.route("/")
 	.post(savePost)
 	.get(findAll)
+
+router.route("/:id")
 	//.put(updatePost)
 	.delete(deletePost)
 
