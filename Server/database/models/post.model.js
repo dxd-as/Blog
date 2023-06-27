@@ -15,7 +15,7 @@ import { DataTypes } from "sequelize";
 import { mySqlConnection } from "../mySql.js";
 
 
-export class post {
+export class newPost {
 	constructor({ title, content, image }) {
 		this.title = title;
 		this.content = content;

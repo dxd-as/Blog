@@ -13,18 +13,20 @@
  */
 
 import { feedServiceMySql } from '../services/post.service.js';
+import { newPost } from '../database/models/post.model.js';
 
 const feedService = new feedServiceMySql();
 
 export const savePost = async (req, res) => {
-	const newPost = new Post(req.body);
-	if (newPost.title === null || newPost.content === null || newPost.image === null) {
+	const post = new newPost(req.body);
+	console.log("TITLE -> " + req.body.title);
+	if (post.title === null || post.content === null || post.image === null) {
 		return res.status(400).json({
-			msg: 'Revisa los datos introducidos'
+			msg: 'Check input data'
 		});
 	}
 	else {
-		feedService.save(newPost)
+		feedService.save(post)
 		return res.sendStatus(200);
 	}
 };

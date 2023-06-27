@@ -11,8 +11,6 @@
  * Description: Database queries
  */
 
-
-import { Sequelize, where } from 'sequelize';
 import { Post } from '../database/models/post.model.js';
 
 export class feedServiceMySql {
