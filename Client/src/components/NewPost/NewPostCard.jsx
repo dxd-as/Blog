@@ -12,6 +12,7 @@
  */
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NewPostCard(props) {
   const { savePost } = props;
@@ -21,9 +22,17 @@ export default function NewPostCard(props) {
     image: "url desde react",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     savePost(formState);
+    setFormState({
+      title: "",
+      content: "",
+      image: "",
+    });
+    navigate("/");
   };
 
   const handleOnChange = (event) => {
