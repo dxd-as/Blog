@@ -32,7 +32,8 @@
 			"name": "ReactChrome",
 			"request": "launch",
 			"type": "chrome",
-			"url": "http://10.211.55.4:3000",
+			//"url": "http://10.211.55.4:3000",
+			"url": "http://localhost:3000/",
 			"webRoot": "${workspaceFolder}/Client"
 		}
 	],
