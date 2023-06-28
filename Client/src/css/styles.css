@@ -1,0 +1,35 @@
+@font-face {
+	font-family: Montserrat Font;
+	src: url(./fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+.font-family--Montserrat-font {
+	font-family: "Montserrat Font", monospace;
+}
+
+@font-face {
+	font-family: Caveat Font;
+	src: url(./fonts/Caveat-VariableFont_wght.ttf);
+}
+
+.font-family--Caveat-font {
+	font-family: "Caveat Font", monospace;
+}
+
+.h1 {
+	font-family: "Caveat Font", monospace;
+}
+
+.h2 {
+	font-family: "Montserrat Font", monospace;
+}
+
+.bg-body {
+	background-image: url("../../public/images/background.jpg");
+}
+
+.form-control,
+form {
+	min-width: 70%;
+	min-height: 70%;
+}
