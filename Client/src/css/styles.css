@@ -44,3 +44,8 @@ form {
 	padding: 16px;
 	text-align: center;
 }
+
+.Link {
+	text-decoration: none;
+	color: black;
+}

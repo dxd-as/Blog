@@ -12,11 +12,11 @@
  */
 
 export const ROUTES = Object.freeze({
-	FEED: "/", //Homepage
-	NEW_POST: "/new_post", //Create new post
-	POSTS: "/post" //shows all post content
+  FEED: "/", //Homepage
+  NEW_POST: "/new_post", //Create new post
+  POST: "/post/:id", //shows all post content
 });
 
 export const HTTP_REQ = Object.freeze({
-	URL: "http://localhost:3001"
+  URL: "http://localhost:3001",
 });

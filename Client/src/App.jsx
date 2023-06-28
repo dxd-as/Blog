@@ -15,6 +15,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "./common/enums";
 import Feed from "./views/Feed";
 import NewPost from "./views/NewPost";
+import Post from "./views/Post";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +26,10 @@ const router = createBrowserRouter([
     path: ROUTES.NEW_POST,
     element: <NewPost />,
   },
-  /*   {
-    path: ROUTES.POSTS,
+  {
+    path: ROUTES.POST,
     element: <Post />,
-  }, */
+  },
 ]);
 
 export default function App() {

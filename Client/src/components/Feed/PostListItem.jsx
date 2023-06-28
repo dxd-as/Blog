@@ -12,15 +12,24 @@
  * PostList.
  */
 
+import { Link } from "react-router-dom";
+
 export default function PostListItem(props) {
   const { post } = props;
   return (
     <div className="card  rounded-3  d-flex justify-content-start  m-3">
       <section>
         <article>
-          <p> {post.title}</p>
+          <Link
+            to={"post/" + post.id}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div>
+              <p> {post.title}</p>
+              <p> {post.image}</p>
+            </div>
+          </Link>
           <p> {post.content}</p>
-          <p> {post.image}</p>
         </article>
       </section>
     </div>
