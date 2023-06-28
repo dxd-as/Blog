@@ -11,12 +11,13 @@
 			"url": "http://10.211.55.4:5501/Front/index.html",
 			"webRoot": "${workspaceFolder}/Front"
 		},
-		{
+ 		{
 			"name": "Server",
 			"program": "${workspaceFolder}/Server/app.js",
 			"request": "launch",
 			"skipFiles": ["<node_internals>/**"],
 			"runtimeArgs": ["./Server/node_modules/nodemon/bin/nodemon.js"],
+			"envFile": "${workspaceFolder}/Server/.env",
 			"type": "node"
 		},
 		{
@@ -25,14 +26,14 @@
 			"type": "node",
 			"runtimeExecutable": "npm",
 			"runtimeArgs": ["start"],
-			"cwd": "${workspaceFolder}/Client/app"
+			"cwd": "${workspaceFolder}/Client"
 		},
 		{
 			"name": "ReactChrome",
 			"request": "launch",
 			"type": "chrome",
 			"url": "http://10.211.55.4:3000",
-			"webRoot": "${workspaceFolder}/Client/app"
+			"webRoot": "${workspaceFolder}/Client"
 		}
 	],
 	"compounds": [
