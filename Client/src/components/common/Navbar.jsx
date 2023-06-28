@@ -11,10 +11,11 @@
  * Description: Component Navbar. Used in the Main layout
  */
 
-/* import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Nav"; */
+import { Routes, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../common/enums";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand-lg navbar-light p-3 bg-body-tertiary">
       <div className="container">
@@ -44,46 +45,16 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <button className="btn btn-outline-primary">Nueva entrada</button>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => navigate(`${ROUTES.NEW_POST}`)}
+              >
+                Nueva entrada
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    /*     <nav className="navbar p-3 bg-body-tertiary">
-      <div class=" d-flex align-items-center">
-        <a className="navbar-brand" href="#">
-          <img
-            src="/images/logo.png"
-            alt="Logo"
-            width="60"
-            height="60"
-            class="d-inline-block align-text-top"
-          ></img>
-        </a>
-        <h6 className=" font-family--Montserrat-font m-0">
-          Tu blog de ciclismo
-        </h6>
-      </div>
-
-      <button className=" ml-auto btn btn-outline-primary">
-        Nueva entrada
-      </button>
-    </nav> */
-    /*     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src="/images/logo.png"
-            width="60"
-            height="60"
-            className="d-inline-block align-top"
-          />{" "}
-          Tu blog de ciclismo00000000
-        </Navbar.Brand>
-      </Container>
-    </Navbar> */
   );
 }

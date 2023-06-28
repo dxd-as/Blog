@@ -12,11 +12,14 @@
  */
 
 import MainLayout from "../layouts/MainLayout";
+import PostList from "../components/Feed/PostList";
 
 export default function Feed() {
   return (
     <MainLayout>
-      <h6> esto esta dentro del mainlayout component</h6>
+      <div className="col-lg-8 d-flex  justify-content-center">
+        <PostList />
+      </div>
     </MainLayout>
   );
 }

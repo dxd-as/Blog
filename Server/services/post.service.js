@@ -11,21 +11,21 @@
  * Description: Database queries
  */
 
-import { Post } from '../database/models/post.model.js';
+import { Post } from "../database/models/post.model.js";
 
 export class feedServiceMySql {
-	save(newPost) {
-		return Post.create(newPost);
-	};
+  save(newPost) {
+    return Post.create(newPost);
+  }
 
-	findAll() {
-		return Post.findAll();
-	};
+  findAll() {
+    return Post.findAll({ order: [["created_at", "DESC"]] });
+  }
 
-	removeOneById(id) {
-		return Post.destroy({ where: { id } });
-	}
-	updateOneById(id, title, content, image) {
-		return Post.update({ title, content, image }, { where: { id } });
-	}
+  removeOneById(id) {
+    return Post.destroy({ where: { id } });
+  }
+  updateOneById(id, title, content, image) {
+    return Post.update({ title, content, image }, { where: { id } });
+  }
 }

@@ -33,3 +33,14 @@ form {
 	min-width: 70%;
 	min-height: 70%;
 }
+
+.card {
+	padding: 1rem;
+	background: white;
+	border-radius: 0.8rem;
+}
+
+.container {
+	padding: 16px;
+	text-align: center;
+}
