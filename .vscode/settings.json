@@ -1,14 +1,22 @@
 {
-	"cSpell.words": [
-		"Arango",
-		"ciclismo",
-		"Crear",
-		"datos",
-		"introducidos",
-		"PEDALEANDO",
-		"Prueba",
-		"Revisa",
-		"sencillo"
-	],
-	"editor.formatOnSave": true,
+  "cSpell.words": [
+    "Arango",
+    "ciclismo",
+    "Crear",
+    "datos",
+    "introducidos",
+    "PEDALEANDO",
+    "Prueba",
+    "Revisa",
+    "sencillo"
+  ],
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
