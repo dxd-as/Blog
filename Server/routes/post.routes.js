@@ -11,17 +11,26 @@
  * Description: API routes to the controllers
  */
 
-import { Router } from 'express';
-import { deletePost, findAll, savePost, updatePost } from '../Controllers/post.controller.js';
+import { Router } from "express";
+import {
+  deletePost,
+  findAll,
+  findOne,
+  savePost,
+  updatePost,
+} from "../Controllers/post.controller.js";
 
 const router = Router();
 
+// prettier-ignore
 router.route("/")
 	.post(savePost)
-	.get(findAll)
+	.get(findAll);
 
+// prettier-ignore
 router.route("/:id")
 	.patch(updatePost)
 	.delete(deletePost)
+	.get(findOne);
 
 export default router;

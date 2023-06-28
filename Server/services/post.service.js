@@ -21,6 +21,9 @@ export class feedServiceMySql {
   findAll() {
     return Post.findAll({ order: [["created_at", "DESC"]] });
   }
+  findOne(id) {
+    return Post.findOne({ where: { id } });
+  }
 
   removeOneById(id) {
     return Post.destroy({ where: { id } });
