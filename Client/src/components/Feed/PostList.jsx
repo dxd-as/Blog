@@ -41,14 +41,16 @@ export default function PostList() {
 	const deletePost = (id) => {
 		fetch(`${HTTP_REQ.URL}/feed/${id}`, {
 			method: "DELETE",
-		}).then(async (res) => {
-			if (res.status === 200) {
-				getPosts();
-			} else {
-				const data = await res.json();
-				alert(data.msg);
-			}
-		});
+		})
+			.then(async (res) => {
+				if (res.status === 200) {
+					getPosts();
+				} else {
+					const data = await res.json();
+					alert(data.msg);
+				}
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (

@@ -23,14 +23,16 @@ export default function NewPost() {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(newPost),
-		}).then(async (res) => {
-			if (res.status === 200) {
-				console.log("Post saved!");
-			} else {
-				const data = await res.json();
-				alert(data.msg);
-			}
-		});
+		})
+			.then(async (res) => {
+				if (res.status === 200) {
+					console.log("Post saved!");
+				} else {
+					const data = await res.json();
+					alert(data.msg);
+				}
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (

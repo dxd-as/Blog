@@ -29,13 +29,10 @@ export default function PostListItem(props) {
 		<div className="card  rounded-3  d-flex justify-content-start  m-3">
 			<section>
 				<article>
-					<Link
-						className="link-text"
-						to={"post/" + post.id}
-						/* style={{ textDecoration: "none", color: "black" }} */
-					>
+					<Link className="link-text" to={"post/" + post.id}>
 						<div>
 							<h2> {post.title}</h2>
+							{post.image}
 							<img
 								className="post-image  mb-2"
 								src={post.image}

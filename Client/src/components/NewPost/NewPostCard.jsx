@@ -13,16 +13,43 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HTTP_REQ } from "../../common/enums";
 
 export default function NewPostCard(props) {
 	const { savePost } = props;
 	const [formState, setFormState] = useState({
 		title: "",
 		content: "",
-		image: "url desde react",
+		image: "",
 	});
+	const [imageFile, setImageFile] = useState();
 
 	const navigate = useNavigate();
+
+	const getImage = (event) => {
+		setImageFile(event.target.files[0]);
+	};
+
+	const uploadImage = (event) => {
+		event.preventDefault();
+		const formData = new FormData();
+		formData.append("myImage", imageFile);
+
+		fetch(`${HTTP_REQ.URL}/image`, {
+			method: "POST",
+			body: formData,
+		})
+			.then(async (res) => {
+				if (res.status === 200) {
+					const data = await res.json();
+					console.log("image uploaded");
+					setFormState((prevState) => ({ ...prevState, image: data.url }));
+				} else {
+					console.log("error");
+				}
+			})
+			.catch((err) => console.log(err));
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -70,9 +97,16 @@ export default function NewPostCard(props) {
 							<div className="form-group m-2">
 								<input
 									type="file"
+									onChange={getImage}
 									className="form-control-file  mt-3"
 									accept="image/*"
 								></input>
+								<button
+									onClick={uploadImage}
+									className="btn btn-outline-success"
+								>
+									Cargar imagen
+								</button>
 							</div>
 							<div className="d-flex justify-content-center  mt-3">
 								<button type="Submit" className="btn btn-outline-success">
