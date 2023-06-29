@@ -45,7 +45,12 @@ form {
 	text-align: center;
 }
 
-.Link {
+.link-text {
 	text-decoration: none;
 	color: black;
+}
+
+.post-image {
+	width: 350px;
+
 }

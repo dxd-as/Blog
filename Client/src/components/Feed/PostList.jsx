@@ -16,33 +16,46 @@ import PostListItem from "./PostListItem";
 import { HTTP_REQ } from "../../common/enums";
 
 export default function PostList() {
-  const [posts, setPosts] = useState([]);
+	const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+	useEffect(() => {
+		getPosts();
+	}, []);
 
-  const getPosts = () => {
-    fetch(`${HTTP_REQ.URL}/feed`, {
-      method: "GET",
-    })
-      .then(async (res) => {
-        if (res.status === 200) {
-          const post = await res.json();
-          setPosts(post.post);
-        } else {
-          const data = await res.json();
-          alert(data.msg);
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+	const getPosts = () => {
+		fetch(`${HTTP_REQ.URL}/feed`, {
+			method: "GET",
+		})
+			.then(async (res) => {
+				if (res.status === 200) {
+					const post = await res.json();
+					setPosts(post.post);
+				} else {
+					const data = await res.json();
+					alert(data.msg);
+				}
+			})
+			.catch((err) => console.log(err));
+	};
 
-  return (
-    <div>
-      {posts.map((post, index) => (
-        <PostListItem post={post} key={index} />
-      ))}
-    </div>
-  );
+	const deletePost = (id) => {
+		fetch(`${HTTP_REQ.URL}/feed/${id}`, {
+			method: "DELETE",
+		}).then(async (res) => {
+			if (res.status === 200) {
+				getPosts();
+			} else {
+				const data = await res.json();
+				alert(data.msg);
+			}
+		});
+	};
+
+	return (
+		<div>
+			{posts.map((post, index) => (
+				<PostListItem post={post} key={index} deletePost={deletePost} />
+			))}
+		</div>
+	);
 }
