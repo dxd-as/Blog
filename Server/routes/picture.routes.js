@@ -12,7 +12,7 @@
  */
 
 import { Router } from "express";
-import { uploadImage } from "../controllers/image.controller.js";
+import { uploadImage } from "../controllers/picture.controller.js";
 
 const router = Router();
 

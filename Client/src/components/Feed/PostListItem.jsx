@@ -32,7 +32,6 @@ export default function PostListItem(props) {
 					<Link className="link-text" to={"post/" + post.id}>
 						<div>
 							<h2> {post.title}</h2>
-							{post.image}
 							<img
 								className="post-image  mb-2"
 								src={post.image}

@@ -15,9 +15,10 @@ import express from "express";
 import { mySqlConnection } from "./database/mySql.js";
 import { Post } from "./database/models/post.model.js";
 import feedRouter from "./routes/post.routes.js";
-import imageRouter from "./routes/image.routes.js";
+import pictureRouter from "./routes/picture.routes.js";
 import cors from "cors";
 import config from "./settings/config.js";
+import path from "path";
 
 class App {
 	constructor() {
@@ -58,16 +59,21 @@ class App {
 				console.log(err);
 			});
 	}
-	routes() {
-		this.app.use("/feed", feedRouter);
-		this.app.use("/image", imageRouter);
-	}
-
 	settings() {
 		this.app.use(express.json());
 		this.app.use(cors());
 		this.app.use(express.urlencoded({ extended: false }));
-		this.app.use("/image", express.static("image"));
+		const imagesFolderPath = path.join(
+			process.cwd(),
+			"Server",
+			"Images_Uploaded"
+		);
+		this.app.use("/Images_Uploaded", express.static(imagesFolderPath));
+		console.log("Static file serving middleware added.");
+	}
+	routes() {
+		this.app.use("/feed", feedRouter);
+		this.app.use("/picture", pictureRouter);
 	}
 }
 

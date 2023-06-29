@@ -35,7 +35,7 @@ export default function NewPostCard(props) {
 		const formData = new FormData();
 		formData.append("myImage", imageFile);
 
-		fetch(`${HTTP_REQ.URL}/image`, {
+		fetch(`${HTTP_REQ.URL}/picture`, {
 			method: "POST",
 			body: formData,
 		})
