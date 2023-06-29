@@ -43,7 +43,11 @@ export default function PostListItem(props) {
 							></img>
 						</div>
 					</Link>
-					<p> {post.content}</p>
+					<p>
+						{" "}
+						{post.content.substring(0, 50)}{" "}
+						<Link to={"post/" + post.id}>...leer más</Link>
+					</p>
 					<div>
 						<button
 							className="btn btn-outline-danger"
