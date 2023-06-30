@@ -14,7 +14,6 @@
 import { DataTypes } from "sequelize";
 import { mySqlConnection } from "../mySql.js";
 
-
 export class newPost {
 	constructor({ title, content, image }) {
 		this.title = title;
@@ -23,24 +22,29 @@ export class newPost {
 	}
 }
 
-export const Post = mySqlConnection.define('post', {
-	id: {
-		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true
+export const Post = mySqlConnection.define(
+	"post",
+	{
+		id: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			autoIncrement: true,
+		},
+		title: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
+		content: {
+			type: DataTypes.TEXT,
+			allowNull: false,
+		},
+		image: {
+			type: DataTypes.TEXT,
+			allowNull: true,
+		},
 	},
-	title: {
-		type: DataTypes.TEXT,
-		allowNull: false
-	},
-	content: {
-		type: DataTypes.TEXT,
-		allowNull: false
-	},
-	image: {
-		type: DataTypes.TEXT,
-		allowNull: false
+	{
+		underscored: true,
+		timestamps: true,
 	}
-}, {
-	underscored: true, timestamps: true
-});
+);

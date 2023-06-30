@@ -18,7 +18,6 @@ export const mySqlConnection = new Sequelize({
 	host: config.db.host,
 	database: config.db.database,
 	username: config.db.username,
-	password: config.db.password,
 	port: config.db.port,
 	dialect: config.db.dialect,
 	timezone: config.db.timezone,
