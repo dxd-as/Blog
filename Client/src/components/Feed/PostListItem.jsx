@@ -21,8 +21,8 @@ export default function PostListItem(props) {
 	const { post } = props;
 	const { deletePost } = props;
 
-	const handleDelete = (id) => {
-		deletePost(id);
+	const handleDelete = (id, image) => {
+		deletePost(id, image);
 	};
 
 	return (
@@ -32,11 +32,13 @@ export default function PostListItem(props) {
 					<Link className="link-text" to={"post/" + post.id}>
 						<div>
 							<h2> {post.title}</h2>
-							<img
-								className="post-image  mb-2"
-								src={post.image}
-								alt="post_image"
-							></img>
+							{post.image && (
+								<img
+									className="post-image  mb-2"
+									src={`http://localhost:3001${post.image}`}
+									alt="post_image"
+								></img>
+							)}
 						</div>
 					</Link>
 					<p>
@@ -51,7 +53,7 @@ export default function PostListItem(props) {
 							data-bs-placement="bottom"
 							data-bs-title="Eliminar perfil"
 							onClick={() => {
-								handleDelete(post.id);
+								handleDelete(post.id, post.image);
 							}}
 						>
 							<TrashFill />
