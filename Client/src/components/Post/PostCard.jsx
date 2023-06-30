@@ -11,10 +11,45 @@
  * Description: PostCard component. Render the whole post. Used in Post view
  */
 
-export default function PostCard() {
+import "moment/locale/es";
+import moment from "moment";
+
+export default function PostCard(props) {
+	const { post } = props;
+
 	return (
-		<div>
-			<div>mostrar todo el post y los botones de editar y borrar.</div>
+		<div className="card  rounded-3  d-flex justify-content-start  m-3">
+			<section>
+				<article>
+					<div>
+						<h2> {post.title}</h2>
+						{post.image && (
+							<img
+								className="post-image  mb-2"
+								src={`http://localhost:3001/${post.image}`}
+								alt="post_image"
+							></img>
+						)}
+					</div>
+					<p>{post.content}</p>
+					<div>
+						<button
+							className="btn btn-outline-danger"
+							data-bs-toggle="tooltip"
+							data-bs-placement="bottom"
+							data-bs-title="Eliminar perfil"
+							/* onClick={() => {
+								handleDelete(post.id, post.image);
+							}} */
+						>
+							Borrar
+						</button>
+						<p className="text-secondary m-0">
+							{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
+						</p>
+					</div>
+				</article>
+			</section>
 		</div>
 	);
 }

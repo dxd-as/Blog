@@ -18,20 +18,20 @@ import NewPost from "./views/NewPost";
 import Post from "./views/Post";
 
 const router = createBrowserRouter([
-  {
-    path: ROUTES.FEED,
-    element: <Feed />,
-  },
-  {
-    path: ROUTES.NEW_POST,
-    element: <NewPost />,
-  },
-  {
-    path: ROUTES.POST,
-    element: <Post />,
-  },
+	{
+		path: ROUTES.FEED,
+		element: <Feed />,
+	},
+	{
+		path: ROUTES.NEW_POST,
+		element: <NewPost />,
+	},
+	{
+		path: ROUTES.POST,
+		element: <Post />,
+	},
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+	return <RouterProvider router={router} />;
 }

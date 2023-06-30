@@ -52,7 +52,7 @@ export const findOne = async (req, res) => {
 	await feedService
 		.findOne(id)
 		.then((post) => {
-			return res.json({
+			return res.status(200).json({
 				msg: "data retrieved correctly",
 				post,
 			});
