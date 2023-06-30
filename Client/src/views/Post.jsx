@@ -13,13 +13,15 @@
 
 import PostCard from "../components/Post/PostCard";
 import Layout from "../layouts/Layout";
-import { HTTP_REQ } from "../common/enums";
+import { HTTP_REQ, ROUTES } from "../common/enums";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Post() {
 	const { id } = useParams();
 	const [post, setPost] = useState({});
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getPost();
@@ -42,10 +44,29 @@ export default function Post() {
 			.catch((err) => console.log(err));
 	};
 
+	const deletePost = (id, image) => {
+		fetch(`${HTTP_REQ.URL}/feed/${id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ image: image }),
+		})
+			.then(async (res) => {
+				if (res.status === 200) {
+					navigate(`${ROUTES.FEED}`);
+				} else {
+					const data = await res.json();
+					alert(data.msg);
+				}
+			})
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<div>
 			<Layout>
-				<PostCard post={post} />
+				<PostCard post={post} deletePost={deletePost} />
 			</Layout>
 		</div>
 	);

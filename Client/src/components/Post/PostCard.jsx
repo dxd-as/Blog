@@ -13,9 +13,16 @@
 
 import "moment/locale/es";
 import moment from "moment";
+import { useState } from "react";
 
 export default function PostCard(props) {
 	const { post } = props;
+	const { deletePost } = props;
+	const [edit, SetEdit] = useState(false);
+
+	const handleDelete = (id, image) => {
+		deletePost(id, image);
+	};
 
 	return (
 		<div className="card  rounded-3  d-flex justify-content-start  m-3">
@@ -38,11 +45,19 @@ export default function PostCard(props) {
 							data-bs-toggle="tooltip"
 							data-bs-placement="bottom"
 							data-bs-title="Eliminar perfil"
-							/* onClick={() => {
+							onClick={() => {
 								handleDelete(post.id, post.image);
-							}} */
+							}}
 						>
-							Borrar
+							BORRAR
+						</button>
+						<button
+							className="btn btn-outline-warning"
+							data-bs-toggle="tooltip"
+							data-bs-placement="bottom"
+							data-bs-title="Editar perfil"
+						>
+							EDITAR
 						</button>
 						<p className="text-secondary m-0">
 							{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
