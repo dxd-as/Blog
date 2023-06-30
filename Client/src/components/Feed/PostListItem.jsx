@@ -35,7 +35,7 @@ export default function PostListItem(props) {
 							{post.image && (
 								<img
 									className="post-image  mb-2"
-									src={`http://localhost:3001${post.image}`}
+									src={`http://localhost:3001/${post.image}`}
 									alt="post_image"
 								></img>
 							)}

@@ -36,7 +36,7 @@ export const uploadImage = async (req, res) => {
 			console.log(err);
 		} else {
 			return res.status(200).json({
-				url: "http://localhost:3001/Images_Uploaded/" + imageName,
+				url: "Server/Images_Uploaded/" + imageName,
 			});
 		}
 	});

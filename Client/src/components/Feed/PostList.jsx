@@ -38,9 +38,13 @@ export default function PostList() {
 			.catch((err) => console.log(err));
 	};
 
-	const deletePost = (id) => {
+	const deletePost = (id, image) => {
 		fetch(`${HTTP_REQ.URL}/feed/${id}`, {
 			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ image: image }),
 		})
 			.then(async (res) => {
 				if (res.status === 200) {

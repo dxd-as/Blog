@@ -68,8 +68,7 @@ class App {
 			"Server",
 			"Images_Uploaded"
 		);
-		this.app.use("/Images_Uploaded", express.static(imagesFolderPath));
-		console.log("Static file serving middleware added.");
+		this.app.use("/Server/Images_Uploaded", express.static(imagesFolderPath));
 	}
 	routes() {
 		this.app.use("/feed", feedRouter);
