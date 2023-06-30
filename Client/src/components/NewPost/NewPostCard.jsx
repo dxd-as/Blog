@@ -30,47 +30,54 @@ export default function NewPostCard(props) {
 		setImageFile(event.target.files[0]);
 	};
 
-	const uploadImage = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const formData = new FormData();
-		formData.append("myImage", imageFile);
 
-		fetch(`${HTTP_REQ.URL}/picture`, {
-			method: "POST",
-			body: formData,
-		})
-			.then(async (res) => {
+		if (imageFile) {
+			const formData = new FormData();
+			formData.append("myImage", imageFile);
+			try {
+				const res = await fetch(`${HTTP_REQ.URL}/picture`, {
+					method: "POST",
+					body: formData,
+				});
+
 				if (res.status === 200) {
 					const data = await res.json();
 					console.log("image uploaded");
-					setFormState((prevState) => ({ ...prevState, image: data.url }));
+					const updatedFormState = { ...formState, image: data.url };
+					savePost(updatedFormState);
+					resetForm();
+					navigate("/");
 				} else {
 					console.log("error");
 				}
-			})
-			.catch((err) => console.log(err));
+			} catch (err) {
+				console.log(err);
+			}
+		} else {
+			savePost(formState);
+			resetForm();
+			navigate("/");
+		}
 	};
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		savePost(formState);
+	const resetForm = () => {
 		setFormState({
 			title: "",
 			content: "",
 			image: "",
 		});
-		navigate("/");
 	};
-
 	const handleOnChange = (event) => {
 		setFormState({ ...formState, [event.target.name]: event.target.value });
 	};
+
 	return (
 		<main className="d-flex justify-content-center min-vh-100">
 			<div className="card">
 				<div className="card-body">
 					<p className="card-title d-flex justify-content-center font-family--Montserrat-font">
-						{" "}
 						Nueva Entrada
 					</p>
 					<div>
@@ -101,12 +108,6 @@ export default function NewPostCard(props) {
 									className="form-control-file  mt-3"
 									accept="image/*"
 								></input>
-								<button
-									onClick={uploadImage}
-									className="btn btn-outline-success"
-								>
-									Cargar imagen
-								</button>
 							</div>
 							<div className="d-flex justify-content-center  mt-3">
 								<button type="Submit" className="btn btn-outline-success">
