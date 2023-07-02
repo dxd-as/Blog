@@ -17,9 +17,21 @@ import { useState } from "react";
 
 export default function EditPostCard(props) {
 	const { post } = props;
+	const prevImage = post.image;
+
 	const [selectedImage, setSelectedImage] = useState(
 		`http://localhost:3001/${post.image}` || ""
 	);
+	const [formState, setFormState] = useState({
+		title: post.title,
+		content: post.content,
+		image: post.image,
+	});
+	const [imageFile, setImageFile] = useState();
+
+	const getImage = (event) => {
+		setImageFile(event.target.files[0]);
+	};
 
 	const handleImageChange = (event) => {
 		const file = event.target.files[0];
@@ -28,9 +40,14 @@ export default function EditPostCard(props) {
 			const reader = new FileReader();
 			reader.onload = () => {
 				setSelectedImage(reader.result);
+				setFormState({ ...formState, [event.target.name]: event.target.value });
 			};
 			reader.readAsDataURL(file);
 		}
+	};
+
+	const handleTextChange = (event) => {
+		setFormState({ ...formState, [event.target.name]: event.target.value });
 	};
 
 	return (
@@ -42,6 +59,7 @@ export default function EditPostCard(props) {
 						type="text"
 						className="form-control mb-2"
 						value={post.title}
+						onChange={handleTextChange}
 						name="title"
 						id="title"
 					></input>
@@ -50,6 +68,8 @@ export default function EditPostCard(props) {
 					{post.image && (
 						<label>
 							<input
+								className="post-image"
+								name="image"
 								type="file"
 								style={{ display: "none" }}
 								onChange={handleImageChange}
@@ -63,7 +83,7 @@ export default function EditPostCard(props) {
 						<div className="form-group m-2">
 							<input
 								type="file"
-								/* onChange={getImage} */
+								onChange={getImage}
 								className="form-control-file  mt-3"
 								accept="image/*"
 							></input>
@@ -77,6 +97,7 @@ export default function EditPostCard(props) {
 						id="post-text"
 						rows={15}
 						value={post.content}
+						onChange={handleTextChange}
 					></textarea>
 				</div>
 			</div>
@@ -91,17 +112,6 @@ export default function EditPostCard(props) {
 					}} */
 				>
 					BORRAR
-				</button>
-				<button
-					className="btn btn-outline-warning  m-2"
-					data-bs-toggle="tooltip"
-					data-bs-placement="bottom"
-					data-bs-title="Editar post"
-					/* 		onClick={() => {
-						handleEdit();
-					}} */
-				>
-					EDITAR
 				</button>
 				<button
 					className="btn btn-outline-success  m-2"
