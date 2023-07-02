@@ -43,7 +43,6 @@ export default function EditPostCard(props) {
 			const reader = new FileReader();
 			reader.onload = async () => {
 				setSelectedImage(reader.result);
-				//setFormState({ ...formState, [event.target.name]: event.target.value });
 				const formData = new FormData();
 				formData.append("myImage", file);
 				try {
