@@ -20,7 +20,7 @@ export default function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light p-3 bg-body-tertiary">
 			<div className="container">
-				<a className="navbar-brand" href="#">
+				<a className="navbar-brand d-flex align-items-center" href="#">
 					<img
 						src="/images/logo.png"
 						alt="Logo"
@@ -43,8 +43,11 @@ export default function Navbar() {
 				>
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div className="collapse navbar-collapse" id="navbarCollapse">
-					<ul className="navbar-nav ml-auto">
+				<div
+					className="collapse navbar-collapse justify-content-end"
+					id="navbarCollapse"
+				>
+					<ul className="navbar-nav">
 						<li className="nav-item">
 							<button
 								className="btn btn-outline-primary"
