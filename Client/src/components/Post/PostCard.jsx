@@ -52,10 +52,10 @@ export default function PostCard(props) {
 							<p>{post.content}</p>
 							<div>
 								<button
-									className="btn btn-outline-danger"
+									className="btn btn-outline-danger  m-2"
 									data-bs-toggle="tooltip"
 									data-bs-placement="bottom"
-									data-bs-title="Eliminar perfil"
+									data-bs-title="Eliminar post"
 									onClick={() => {
 										handleDelete(post.id, post.image);
 									}}
@@ -63,10 +63,10 @@ export default function PostCard(props) {
 									BORRAR
 								</button>
 								<button
-									className="btn btn-outline-warning"
+									className="btn btn-outline-warning  m-2"
 									data-bs-toggle="tooltip"
 									data-bs-placement="bottom"
-									data-bs-title="Editar perfil"
+									data-bs-title="Editar post"
 									onClick={() => {
 										handleEdit();
 									}}
@@ -82,7 +82,7 @@ export default function PostCard(props) {
 				</div>
 			)}
 
-			{edit && <EditPostCard />}
+			{edit && <EditPostCard post={post} />}
 		</>
 	);
 }
