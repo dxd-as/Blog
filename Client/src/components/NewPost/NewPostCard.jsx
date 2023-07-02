@@ -51,6 +51,7 @@ export default function NewPostCard(props) {
 					navigate("/");
 				} else {
 					console.log("error");
+					alert("file format not valid");
 				}
 			} catch (err) {
 				console.log(err);

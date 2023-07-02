@@ -24,7 +24,7 @@ export default function PostListItem(props) {
 
 	const handleDelete = (id, image) => {
 		Swal.fire({
-			title: `¿Deseas borrar tu cuenta?`,
+			title: `¿Deseas borrar este post?`,
 			text: "Esta acción no se puede revertir.",
 			icon: "warning",
 			showCancelButton: true,

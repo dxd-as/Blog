@@ -3,7 +3,7 @@
  * Prueba: Crear blog sencillo CRUD
  * **********************************************************************************
  *
- * File name: image.controller.js
+ * File name: picture.controller.js
  * Version: 1.0
  * Created: 29/06/2023
  * Last Modified:
@@ -14,6 +14,8 @@
 
 import multer from "multer";
 import path from "path";
+import { checkImage } from "../middleware/picture.middleware.js";
+import fs from "fs";
 
 var imageName = "";
 
@@ -30,14 +32,21 @@ const upload = multer({
 	limits: { fileSize: 3000000 },
 }).single("myImage");
 
-export const uploadImage = async (req, res) => {
+export const uploadImage = async (req, res, next) => {
 	upload(req, res, (err) => {
 		if (err) {
 			console.log(err);
-		} else {
-			return res.status(200).json({
-				url: "Server/Images_Uploaded/" + imageName,
-			});
+			return res.status(400).json({ error: "Failed to upload file." });
 		}
+		try {
+			checkImage(req, res, next);
+		} catch (error) {
+			fs.unlinkSync(req.file.path);
+			return res.status(400).json({ error: error.message });
+		}
+
+		return res.status(200).json({
+			url: "Server/Images_Uploaded/" + imageName,
+		});
 	});
 };
