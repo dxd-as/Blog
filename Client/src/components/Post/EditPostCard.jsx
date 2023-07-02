@@ -36,6 +36,31 @@ export default function EditPostCard(props) {
 		setImageFile(event.target.files[0]);
 	};
 
+	const uploadImage = async (file) => {
+		const formData = new FormData();
+		formData.append("myImage", file);
+
+		try {
+			const res = await fetch(`${HTTP_REQ.URL}/picture`, {
+				method: "POST",
+				body: formData,
+			});
+
+			if (res.status === 200) {
+				const data = await res.json();
+				console.log("image uploaded");
+				setFormState((prevFormState) => ({
+					...prevFormState,
+					image: data.url,
+				}));
+			} else {
+				console.log("error");
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	const handleImageChange = (event) => {
 		const file = event.target.files[0];
 
@@ -43,8 +68,9 @@ export default function EditPostCard(props) {
 			const reader = new FileReader();
 			reader.onload = async () => {
 				setSelectedImage(reader.result);
-				//setFormState({ ...formState, [event.target.name]: event.target.value });
-				const formData = new FormData();
+				uploadImage(file);
+			};
+			/* const formData = new FormData();
 				formData.append("myImage", file);
 				try {
 					const res = await fetch(`${HTTP_REQ.URL}/picture`, {
@@ -64,7 +90,7 @@ export default function EditPostCard(props) {
 				} catch (err) {
 					console.log(err);
 				}
-			};
+			}; */
 			reader.readAsDataURL(file);
 		}
 	};
@@ -91,34 +117,14 @@ export default function EditPostCard(props) {
 			})
 			.catch((err) => console.log(err));
 	};
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		if (imageFile) {
-			const formData = new FormData();
-			formData.append("myImage", imageFile);
-			try {
-				const res = await fetch(`${HTTP_REQ.URL}/picture`, {
-					method: "POST",
-					body: formData,
-				});
 
-				if (res.status === 200) {
-					const data = await res.json();
-					console.log("image uploaded");
-					const updatedFormState = { ...formState, image: data.url };
-					updatePost(updatedFormState);
-					navigate("/");
-				} else {
-					console.log("error");
-				}
-			} catch (err) {
-				console.log(err);
-			}
-		} else {
-			updatePost(formState);
-			navigate("/");
+		if (imageFile) {
+			await uploadImage(imageFile);
 		}
+		updatePost(formState);
+		navigate("/");
 	};
 
 	return (
