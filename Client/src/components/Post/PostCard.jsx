@@ -82,7 +82,7 @@ export default function PostCard(props) {
 				</div>
 			)}
 
-			{edit && <EditPostCard post={post} />}
+			{edit && <EditPostCard post={post} handleDelete={handleDelete} />}
 		</>
 	);
 }

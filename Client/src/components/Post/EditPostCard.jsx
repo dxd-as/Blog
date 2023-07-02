@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function EditPostCard(props) {
 	const { post } = props;
+	const { handleDelete } = props;
 	const navigate = useNavigate();
 
 	const [imageFile, setImageFile] = useState();
@@ -70,27 +71,6 @@ export default function EditPostCard(props) {
 				setSelectedImage(reader.result);
 				uploadImage(file);
 			};
-			/* const formData = new FormData();
-				formData.append("myImage", file);
-				try {
-					const res = await fetch(`${HTTP_REQ.URL}/picture`, {
-						method: "POST",
-						body: formData,
-					});
-					if (res.status === 200) {
-						const data = await res.json();
-						console.log("image uploaded");
-						setFormState((prevFormState) => ({
-							...prevFormState,
-							image: data.url,
-						}));
-					} else {
-						console.log("error");
-					}
-				} catch (err) {
-					console.log(err);
-				}
-			}; */
 			reader.readAsDataURL(file);
 		}
 	};
@@ -126,6 +106,10 @@ export default function EditPostCard(props) {
 		updatePost(formState);
 		navigate("/");
 	};
+
+	/* 	const handleDelete = (id, image) => {
+		deletePost(id, image);
+	}; */
 
 	return (
 		<div className="card  rounded-3  d-flex justify-content-start  m-3">
@@ -188,9 +172,9 @@ export default function EditPostCard(props) {
 							data-bs-toggle="tooltip"
 							data-bs-placement="bottom"
 							data-bs-title="Eliminar post"
-							/* 				onClick={() => {
-						handleDelete(post.id, post.image);
-					}} */
+							onClick={() => {
+								handleDelete(post.id, post.image);
+							}}
 						>
 							BORRAR
 						</button>
