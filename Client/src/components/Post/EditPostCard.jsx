@@ -19,7 +19,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function EditPostCard(props) {
 	const { post } = props;
-	const { handleDelete } = props;
 	const navigate = useNavigate();
 
 	const [imageFile, setImageFile] = useState();
@@ -37,31 +36,6 @@ export default function EditPostCard(props) {
 		setImageFile(event.target.files[0]);
 	};
 
-	const uploadImage = async (file) => {
-		const formData = new FormData();
-		formData.append("myImage", file);
-
-		try {
-			const res = await fetch(`${HTTP_REQ.URL}/picture`, {
-				method: "POST",
-				body: formData,
-			});
-
-			if (res.status === 200) {
-				const data = await res.json();
-				console.log("image uploaded");
-				setFormState((prevFormState) => ({
-					...prevFormState,
-					image: data.url,
-				}));
-			} else {
-				console.log("error");
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
 	const handleImageChange = (event) => {
 		const file = event.target.files[0];
 
@@ -69,7 +43,27 @@ export default function EditPostCard(props) {
 			const reader = new FileReader();
 			reader.onload = async () => {
 				setSelectedImage(reader.result);
-				uploadImage(file);
+				//setFormState({ ...formState, [event.target.name]: event.target.value });
+				const formData = new FormData();
+				formData.append("myImage", file);
+				try {
+					const res = await fetch(`${HTTP_REQ.URL}/picture`, {
+						method: "POST",
+						body: formData,
+					});
+					if (res.status === 200) {
+						const data = await res.json();
+						console.log("image uploaded");
+						setFormState((prevFormState) => ({
+							...prevFormState,
+							image: data.url,
+						}));
+					} else {
+						console.log("error");
+					}
+				} catch (err) {
+					console.log(err);
+				}
 			};
 			reader.readAsDataURL(file);
 		}
@@ -97,19 +91,35 @@ export default function EditPostCard(props) {
 			})
 			.catch((err) => console.log(err));
 	};
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-
 		if (imageFile) {
-			await uploadImage(imageFile);
-		}
-		updatePost(formState);
-		navigate("/");
-	};
+			const formData = new FormData();
+			formData.append("myImage", imageFile);
+			try {
+				const res = await fetch(`${HTTP_REQ.URL}/picture`, {
+					method: "POST",
+					body: formData,
+				});
 
-	/* 	const handleDelete = (id, image) => {
-		deletePost(id, image);
-	}; */
+				if (res.status === 200) {
+					const data = await res.json();
+					console.log("image uploaded");
+					const updatedFormState = { ...formState, image: data.url };
+					updatePost(updatedFormState);
+					navigate("/");
+				} else {
+					console.log("error");
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		} else {
+			updatePost(formState);
+			navigate("/");
+		}
+	};
 
 	return (
 		<div className="card  rounded-3  d-flex justify-content-start  m-3">
@@ -172,9 +182,9 @@ export default function EditPostCard(props) {
 							data-bs-toggle="tooltip"
 							data-bs-placement="bottom"
 							data-bs-title="Eliminar post"
-							onClick={() => {
-								handleDelete(post.id, post.image);
-							}}
+							/* 				onClick={() => {
+						handleDelete(post.id, post.image);
+					}} */
 						>
 							BORRAR
 						</button>
