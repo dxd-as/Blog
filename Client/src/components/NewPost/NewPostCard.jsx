@@ -111,7 +111,7 @@ export default function NewPostCard(props) {
 							</div>
 							<div className="d-flex justify-content-center  mt-3">
 								<button type="Submit" className="btn btn-outline-success">
-									Guardar
+									GUARDAR
 								</button>
 							</div>
 						</form>

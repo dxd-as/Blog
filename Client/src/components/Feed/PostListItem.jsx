@@ -51,7 +51,7 @@ export default function PostListItem(props) {
 							className="btn btn-outline-danger"
 							data-bs-toggle="tooltip"
 							data-bs-placement="bottom"
-							data-bs-title="Eliminar perfil"
+							data-bs-title="Eliminar post"
 							onClick={() => {
 								handleDelete(post.id, post.image);
 							}}

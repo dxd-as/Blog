@@ -95,7 +95,14 @@ export const deletePost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
 	const id = req.params.id;
-	const { title, content, image } = req.body;
+	const { title, content, image, prevImage } = req.body;
+
+	if (prevImage !== "") {
+		if (image !== prevImage) {
+			fs.unlinkSync(prevImage);
+		}
+	}
+
 	feedService
 		.updateOneById(id, title, content, image)
 		.then((post) => {
