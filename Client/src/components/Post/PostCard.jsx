@@ -15,6 +15,7 @@ import "moment/locale/es";
 import moment from "moment";
 import { useState, useEffect } from "react";
 import EditPostCard from "./EditPostCard";
+import Swal from "sweetalert2";
 
 export default function PostCard(props) {
 	const { post } = props;
@@ -26,11 +27,24 @@ export default function PostCard(props) {
 	}, []);
 
 	const handleDelete = (id, image) => {
-		deletePost(id, image);
+		Swal.fire({
+			title: `¿Deseas borrar tu cuenta?`,
+			text: "Esta acción no se puede revertir.",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Borrar",
+			cancelButtonText: "Cancelar",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deletePost(id, image);
+			}
+		});
 	};
 
 	const handleEdit = () => {
-		SetEdit(true);
+		SetEdit(!edit);
 	};
 
 	return (
@@ -82,7 +96,7 @@ export default function PostCard(props) {
 				</div>
 			)}
 
-			{edit && <EditPostCard post={post} handleDelete={handleDelete} />}
+			{edit && <EditPostCard post={post} handleEdit={handleEdit} />}
 		</>
 	);
 }

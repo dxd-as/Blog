@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function EditPostCard(props) {
 	const { post } = props;
+	const { handleEdit } = props;
 	const navigate = useNavigate();
 
 	const [imageFile, setImageFile] = useState();
@@ -181,11 +182,11 @@ export default function EditPostCard(props) {
 							data-bs-toggle="tooltip"
 							data-bs-placement="bottom"
 							data-bs-title="Eliminar post"
-							/* 				onClick={() => {
-						handleDelete(post.id, post.image);
-					}} */
+							onClick={() => {
+								handleEdit();
+							}}
 						>
-							BORRAR
+							CANCELAR
 						</button>
 						<button
 							type="submit"
