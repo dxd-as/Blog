@@ -16,12 +16,12 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 
 export default function MainLayout(props) {
-  return (
-    <div className="d-flex flex-column min-vh-100 bg-body" id="main-layout">
-      <Header />
-      <Navbar />
-      <main className="min-vh-100">{props.children}</main>
-      <Footer />
-    </div>
-  );
+	return (
+		<div className="d-flex flex-column min-vh-100 bg-body" id="main-layout">
+			<Header />
+			<Navbar />
+			<main className="min-vh-100">{props.children}</main>
+			<Footer />
+		</div>
+	);
 }

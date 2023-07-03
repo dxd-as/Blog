@@ -40,44 +40,66 @@ export default function PostListItem(props) {
 	};
 
 	return (
-		<div className="card  rounded-3  d-flex justify-content-start  m-3">
-			<section>
-				<article>
-					<Link className="link-text" to={"post/" + post.id}>
-						<div>
-							<h2> {post.title}</h2>
-							{post.image && (
-								<img
-									className="post-image  mb-2"
-									src={`http://localhost:3001/${post.image}`}
-									alt="post_image"
-								></img>
-							)}
-						</div>
-					</Link>
-					<p>
-						{" "}
-						{post.content.substring(0, 50)}{" "}
-						<Link to={"post/" + post.id}>...leer más</Link>
+		<div className="card  rounded-3  d-flex flex-column align-items-center  m-3">
+			<div className="row">
+				<div className="col-12">
+					<section className="d-inline-flex w-100">
+						<article>
+							<div>
+								<Link className="link-text" to={"post/" + post.id}>
+									<div className="d-flex justify-content-center">
+										<h2 className="font-family--Montserrat-font">
+											{" "}
+											{post.title}
+										</h2>
+									</div>
+									<div className="d-flex justify-content-center">
+										{post.image && (
+											<img
+												className="post-image mx-auto mb-2"
+												src={`http://localhost:3001/${post.image}`}
+												alt="post_image"
+											></img>
+										)}
+									</div>
+								</Link>
+							</div>
+							<div className="d-flex flex-column justify-content-start">
+								<p className="font-family--Montserrat-font">
+									{post.content.substring(0, 50)}
+									<Link
+										className="font-family--Montserrat-font"
+										to={"post/" + post.id}
+									>
+										...leer más
+									</Link>
+								</p>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+
+			<div className="col-12 d-flex justify-content-between">
+				<div>
+					<button
+						className="btn btn-outline-danger"
+						data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-title="Eliminar post"
+						onClick={() => {
+							handleDelete(post.id, post.image);
+						}}
+					>
+						<TrashFill />
+					</button>
+				</div>
+				<div>
+					<p className="text-secondary m-0 ">
+						{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
 					</p>
-					<div>
-						<button
-							className="btn btn-outline-danger"
-							data-bs-toggle="tooltip"
-							data-bs-placement="bottom"
-							data-bs-title="Eliminar post"
-							onClick={() => {
-								handleDelete(post.id, post.image);
-							}}
-						>
-							<TrashFill />
-						</button>
-						<p className="text-secondary m-0">
-							{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
-						</p>
-					</div>
-				</article>
-			</section>
+				</div>
+			</div>
 		</div>
 	);
 }

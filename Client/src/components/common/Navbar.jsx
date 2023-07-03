@@ -29,9 +29,9 @@ export default function Navbar() {
 						className="d-inline-block align-text-top"
 					/>
 				</a>
-				<h6 className="navbar-text font-family--Montserrat-font m-0">
+				<h1 className="navbar-text font-family--Caveat-font">
 					Tu blog de ciclismo
-				</h6>
+				</h1>
 				<button
 					className="navbar-toggler"
 					type="button"

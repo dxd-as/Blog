@@ -50,20 +50,22 @@ export default function PostCard(props) {
 	return (
 		<>
 			{!edit && (
-				<div className="card  rounded-3  d-flex justify-content-start  m-3">
+				<div className="card  rounded-3  d-flex d-column justify-content-start  m-3">
 					<section>
 						<article>
-							<div>
-								<h2> {post.title}</h2>
-								{post.image && (
-									<img
-										className="post-image  mb-2"
-										src={`http://localhost:3001/${post.image}`}
-										alt="post_image"
-									></img>
-								)}
+							<div className="d-flex justify-content-center">
+								<h2 className=" font-family--Montserrat-font"> {post.title}</h2>
+								<div className="d-flex justify-content-center">
+									{post.image && (
+										<img
+											className="post-image  mb-2"
+											src={`http://localhost:3001/${post.image}`}
+											alt="post_image"
+										></img>
+									)}
+								</div>
 							</div>
-							<p>{post.content}</p>
+							<pre className="font-family--Montserrat-font">{post.content}</pre>
 							<div>
 								<button
 									className="btn btn-outline-danger  m-2"

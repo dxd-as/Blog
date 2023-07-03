@@ -17,12 +17,11 @@ import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
 
 export default function Layout(props) {
-  return (
-    <div className="d-flex flex-column min-vh-100 bg-body" id="layout">
-      <Header />
-      {/*       <Navbar /> */}
-      <main className="min-vh-100">{props.children}</main>
-      <Footer />
-    </div>
-  );
+	return (
+		<div className="d-flex flex-column min-vh-100 bg-body" id="layout">
+			<Header />
+			<main className="min-vh-100">{props.children}</main>
+			<Footer />
+		</div>
+	);
 }

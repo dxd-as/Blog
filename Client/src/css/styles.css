@@ -52,5 +52,18 @@ form {
 
 .post-image {
 	width: 350px;
+	max-height: 250px;
 
+}
+
+@media (max-width: 767.98px) {
+	.card {
+		width: 100%;
+		max-width: 400px;
+	}
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
