@@ -239,7 +239,7 @@ Contiene las imagenes, backgrounds e iconos de la aplicación.
 
 ## **Feed**
 
-![Feed](Documentation\Images\image.png)
+![Feed](Documentation/Images/image.png)
 
 Una vez inicializado el proyecto, lo primero que tenemos es el **FEED**. En esta sección se renderizan las diferentes entradas de las que se compone el Blog.
 En la parte superior tenemos la barra de navegación desde la que se puede crear una **Nueva Entrada**.
@@ -248,38 +248,38 @@ Además en cada entrada se muestra su fecha y hora de publicación y hay un bot�
 
 ## **Nueva Entrada**
 
-![NewPost](Documentation\Images\image-5.png)
+![NewPost](Documentation/Images/image-5.png)
 
 Desde aqui podemos introducir una nueva entrada. Se dispone de campos para el título de la entrada y para el contenido. Además se puede adjuntar la imagen a la entrada si se desea (no es obligatorio). Al adjuntar la imagen se realiza una comprobación de que se trata de un fichero de formato Imagen, saliendo un mensaje de error en caso de que no lo sea.
 Una vez introducida la nueva entrada será almacenada en la DB y la imagen en la carpeta disponible en el servidor para almancenar las imagenes.
 
-![Alt text](Documentation\Images\image-6.png)
+![Alt text](Documentation/Images/image-6.png)
 
 ## **Post**
 
-![Post](Documentation\Images\image-1.png)
+![Post](Documentation/Images/image-1.png)
 
 En la vista **POST** se muestra toda la entrada completa. En esta vista se incluye un botón de para **BORRAR** la entrada y otro **EDITAR** para activar el modo de edición.
 Pulsando sobre el botón de **BORRAR** aparecerá el siguiente mensaje para la confirmación de la acción. Si se confirma, se borra la entrada y la imagen de la carpeta del servidor donde se encuentra almacenada.
 
-![Delete](Documentation\Images\image-2.png)
+![Delete](Documentation/Images/image-2.png)
 
 Pulsando sobre el botón de **EDITAR** se activa el modo Edición, el cual sobre la misma ruta carga la entrada de manera que los campos pasen a ser editables. Además aparece el botón de **Guardar** o **Cancelar**.
 
-![Edit](Documentation\Images\image-3.png)
+![Edit](Documentation/Images/image-3.png)
 
 Tenemos dos posibilidades de edición:
 
 - si la entrada ha sido creada ya con imagen adjunta, entonces pulsando sobre la imagen se podrá cambiar la imagen (En caso de cambiarla, la imagen anterior se borra de la carpeta donde está almacenada en el Server.)
 
-![Edit-Post-Image](Documentation\Images\image-4.png)
+![Edit-Post-Image](Documentation/Images/image-4.png)
 
 - Si la entrada se creó sin imagen, tenemos un botón para añadir una imagen.
 
-![Edit-Post-Without-Image](Documentation\Images\image-7.png)
+![Edit-Post-Without-Image](Documentation/Images/image-7.png)
 
 Se adjunta la imagen y se guarda junto con la entrada.
-![Post-Edited](Documentation\Images\image-8.png)
+![Post-Edited](Documentation/Images/image-8.png)
 
 ## **Mejoras**
 
