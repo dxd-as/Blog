@@ -14,6 +14,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HTTP_REQ } from "../../common/enums";
+import Swal from "sweetalert2";
 
 export default function NewPostCard(props) {
 	const { savePost } = props;
@@ -50,8 +51,12 @@ export default function NewPostCard(props) {
 					resetForm();
 					navigate("/");
 				} else {
-					console.log("error");
-					alert("file format not valid");
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Formato de fichero incorrecto!",
+						footer: "Por favor, adjunte una imagen",
+					});
 				}
 			} catch (err) {
 				console.log(err);
