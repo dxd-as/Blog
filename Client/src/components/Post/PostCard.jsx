@@ -50,22 +50,18 @@ export default function PostCard(props) {
 	return (
 		<>
 			{!edit && (
-				<div className="card  rounded-3  d-flex d-column justify-content-start  m-3">
-					<section>
-						<article>
-							<div className="d-flex justify-content-center">
-								<h2 className=" font-family--Montserrat-font"> {post.title}</h2>
-								<div className="d-flex justify-content-center">
-									{post.image && (
-										<img
-											className="post-image  mb-2"
-											src={`http://localhost:3001/${post.image}`}
-											alt="post_image"
-										></img>
-									)}
-								</div>
-							</div>
-							<pre className="font-family--Montserrat-font">{post.content}</pre>
+				<div className="card card-post  rounded-3  d-flex align-items-center w-75 m-3">
+					<div className="w-100 d-flex flex-column align-items-center">
+						<h2 className=" font-family--Montserrat-font"> {post.title}</h2>
+						{post.image && (
+							<img
+								className="post-image  mb-2"
+								src={`http://localhost:3001/${post.image}`}
+								alt="post_image"
+							></img>
+						)}
+						<pre className="font-family--Montserrat-font">{post.content}</pre>
+						<div className="d-flex w-100 justify-content-between align-items-center">
 							<div>
 								<button
 									className="btn btn-outline-danger  m-2"
@@ -89,12 +85,12 @@ export default function PostCard(props) {
 								>
 									EDITAR
 								</button>
-								<p className="text-secondary m-0">
-									{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
-								</p>
 							</div>
-						</article>
-					</section>
+							<p className="text-secondary m-0">
+								{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
+							</p>
+						</div>
+					</div>
 				</div>
 			)}
 

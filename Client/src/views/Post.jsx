@@ -64,10 +64,8 @@ export default function Post() {
 	};
 
 	return (
-		<div>
-			<Layout>
-				<PostCard post={post} deletePost={deletePost} />
-			</Layout>
-		</div>
+		<Layout>
+			<PostCard post={post} deletePost={deletePost} />
+		</Layout>
 	);
 }

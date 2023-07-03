@@ -34,10 +34,18 @@ form {
 	min-height: 70%;
 }
 
-.card {
+.card-feed {
 	padding: 1rem;
 	background: white;
 	border-radius: 0.8rem;
+	max-width: 90rem;
+}
+
+.card-post {
+	padding: 1rem;
+	background: white;
+	border-radius: 0.8rem;
+	max-width: 60rem;
 }
 
 .container {
@@ -51,15 +59,16 @@ form {
 }
 
 .post-image {
-	width: 350px;
-	max-height: 250px;
+	/* width: 350px; */
+	/* max-height: 250px; */
+	max-height: 25rem;
+	object-fit: cover;
 
 }
 
 @media (max-width: 767.98px) {
-	.card {
+	.post-image {
 		width: 100%;
-		max-width: 400px;
 	}
 }
 

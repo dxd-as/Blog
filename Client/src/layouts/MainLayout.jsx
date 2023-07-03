@@ -17,10 +17,15 @@ import Footer from "../components/common/Footer";
 
 export default function MainLayout(props) {
 	return (
-		<div className="d-flex flex-column min-vh-100 bg-body" id="main-layout">
+		<div
+			className="d-flex flex-column min-vh-100 bg-body w-100"
+			id="main-layout"
+		>
 			<Header />
 			<Navbar />
-			<main className="min-vh-100">{props.children}</main>
+			<main className="d-flex flex-column align-items-center flex-grow-1">
+				{props.children}
+			</main>
 			<Footer />
 		</div>
 	);

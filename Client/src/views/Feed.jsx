@@ -17,9 +17,7 @@ import PostList from "../components/Feed/PostList";
 export default function Feed() {
 	return (
 		<MainLayout>
-			<div className="d-flex justify-content-center">
-				<PostList />
-			</div>
+			<PostList />
 		</MainLayout>
 	);
 }

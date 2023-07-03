@@ -18,9 +18,11 @@ import Footer from "../components/common/Footer";
 
 export default function Layout(props) {
 	return (
-		<div className="d-flex flex-column min-vh-100 bg-body" id="layout">
+		<div className="d-flex flex-column min-vh-100 bg-body w-100" id="layout">
 			<Header />
-			<main className="min-vh-100">{props.children}</main>
+			<main className="d-flex flex-column align-items-center flex-grow-1">
+				{props.children}
+			</main>
 			<Footer />
 		</div>
 	);

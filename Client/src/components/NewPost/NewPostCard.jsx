@@ -75,51 +75,44 @@ export default function NewPostCard(props) {
 	};
 
 	return (
-		<main className="d-flex justify-content-center align-items-top min-vh-100">
-			<div className="card" style={{ width: "80%", minWidth: "400px" }}>
-				<div className="card-body">
-					<h3 className="card-title d-flex justify-content-center font-family--Montserrat-font">
-						Nueva Entrada
-					</h3>
-					<div>
-						<form onSubmit={handleSubmit}>
-							<div className="form-group ">
-								<input
-									onChange={handleOnChange}
-									type="text"
-									className="form-control mt-3 "
-									name="title"
-									id="title"
-									placeholder="Título"
-								></input>
-							</div>
-							<div className="form-group">
-								<textarea
-									onChange={handleOnChange}
-									className="form-control  mt-3"
-									name="content"
-									id="content"
-									rows={15}
-									placeholder="Introducir texto del post"
-								></textarea>
-							</div>
-							<div className="form-group m-2">
-								<input
-									type="file"
-									onChange={getImage}
-									className="form-control-file  mt-3"
-									accept="image/*"
-								></input>
-							</div>
-							<div className="d-flex justify-content-center  mt-3">
-								<button type="Submit" className="btn btn-outline-success">
-									GUARDAR
-								</button>
-							</div>
-						</form>
+		<div className="card w-75">
+			<div className="card-body">
+				<form onSubmit={handleSubmit}>
+					<div className="form-group ">
+						<input
+							onChange={handleOnChange}
+							type="text"
+							className="form-control mt-3 "
+							name="title"
+							id="title"
+							placeholder="Título"
+						></input>
 					</div>
-				</div>
+					<div className="form-group">
+						<textarea
+							onChange={handleOnChange}
+							className="form-control  mt-3"
+							name="content"
+							id="content"
+							rows={15}
+							placeholder="Introducir texto del post"
+						></textarea>
+					</div>
+					<div className="form-group m-2">
+						<input
+							type="file"
+							onChange={getImage}
+							className="form-control-file  mt-3"
+							accept="image/*"
+						></input>
+					</div>
+					<div className="d-flex justify-content-center  mt-3">
+						<button type="Submit" className="btn btn-outline-success">
+							GUARDAR
+						</button>
+					</div>
+				</form>
 			</div>
-		</main>
+		</div>
 	);
 }

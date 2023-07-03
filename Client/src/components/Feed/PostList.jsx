@@ -58,7 +58,7 @@ export default function PostList() {
 	};
 
 	return (
-		<div className="d-flex flex-column">
+		<div className="d-flex flex-column gap-3 p-3">
 			{posts.map((post, index) => (
 				<PostListItem post={post} key={index} deletePost={deletePost} />
 			))}

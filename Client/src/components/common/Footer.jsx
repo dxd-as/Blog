@@ -11,9 +11,9 @@
  * Description: Footer component. Used in the Mainlayout
  */
 export default function Footer() {
-  return (
-    <footer>
-      <strong>PEDALEANDO</strong> © 2023
-    </footer>
-  );
+	return (
+		<footer className="d-flex ml-3">
+			<strong>PEDALEANDO </strong> © 2023
+		</footer>
+	);
 }

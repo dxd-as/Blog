@@ -37,6 +37,9 @@ export default function NewPost() {
 
 	return (
 		<Layout>
+			<h3 className="card-title d-flex justify-content-center font-family--Montserrat-font py-3">
+				Nueva Entrada
+			</h3>
 			<NewPostCard savePost={savePost} />
 		</Layout>
 	);

@@ -122,89 +122,87 @@ export default function EditPostCard(props) {
 	};
 
 	return (
-		<div className="card  rounded-3  d-flex justify-content-start  m-3">
-			<div>
-				<form onSubmit={handleSubmit}>
-					<div>
-						<label for="title">Título</label>
+		<div className="card card-post  rounded-3  d-flex align-items-center w-75 m-3">
+			{/* <div className="w-100 d-flex flex-column align-items-center"> */}
+			<form onSubmit={handleSubmit}>
+				<label for="title">Título</label>
+				<input
+					type="text"
+					className="form-control mb-2"
+					value={formState.title}
+					onChange={handleTextChange}
+					name="title"
+					id="title"
+				></input>
+				{post.image && (
+					<label>
 						<input
-							type="text"
-							className="form-control mb-2"
-							value={formState.title}
-							onChange={handleTextChange}
-							name="title"
-							id="title"
+							className="post-image"
+							name="image"
+							type="file"
+							style={{ display: "none" }}
+							onChange={handleImageChange}
+						></input>
+						{selectedImage && (
+							<img
+								className="post-image"
+								src={selectedImage}
+								alt="post_image"
+							></img>
+						)}
+					</label>
+				)}
+				{!post.image && (
+					<div className="form-group m-2">
+						<input
+							type="file"
+							onChange={getImage}
+							className="form-control-file  mt-3"
+							accept="image/*"
 						></input>
 					</div>
-					<div>
-						{post.image && (
-							<label>
-								<input
-									className="post-image"
-									name="image"
-									type="file"
-									style={{ display: "none" }}
-									onChange={handleImageChange}
-								></input>
-								{selectedImage && (
-									<img
-										className="post-image"
-										src={selectedImage}
-										alt="post_image"
-									></img>
-								)}
-							</label>
-						)}
-						{!post.image && (
-							<div className="form-group m-2">
-								<input
-									type="file"
-									onChange={getImage}
-									className="form-control-file  mt-3"
-									accept="image/*"
-								></input>
-							</div>
-						)}
-					</div>
-					<div>
-						<textarea
-							className="form-control m-2"
-							name="content"
-							id="content"
-							rows={15}
-							value={formState.content}
-							onChange={handleTextChange}
-						></textarea>
-					</div>
-					<div>
-						<button
-							className="btn btn-outline-danger m-2"
-							data-bs-toggle="tooltip"
-							data-bs-placement="bottom"
-							data-bs-title="Eliminar post"
-							onClick={() => {
-								handleEdit();
-							}}
-						>
-							CANCELAR
-						</button>
-						<button
-							type="submit"
-							className="btn btn-outline-success  m-2"
-							data-bs-toggle="tooltip"
-							data-bs-placement="bottom"
-							data-bs-title="Guardar post"
-						>
-							GUARDAR
-						</button>
-					</div>
-				</form>
-			</div>
+				)}
+
+				<div>
+					<textarea
+						className="form-control m-2"
+						name="content"
+						id="content"
+						rows={15}
+						value={formState.content}
+						onChange={handleTextChange}
+					></textarea>
+				</div>
+				<div>
+					<button
+						className="btn btn-outline-danger m-2"
+						data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-title="Eliminar post"
+						onClick={() => {
+							handleEdit();
+						}}
+					>
+						CANCELAR
+					</button>
+					<button
+						type="submit"
+						className="btn btn-outline-success  m-2"
+						data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-title="Guardar post"
+					>
+						GUARDAR
+					</button>
+				</div>
+			</form>
+
 			<div>
 				<p className="text-secondary m-0">
 					{moment(post.createdAt).format("DD MMMM YYYY HH:mm")}{" "}
 				</p>
 			</div>
 		</div>
+		/* </div> */
 	);
 }
