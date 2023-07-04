@@ -118,21 +118,10 @@ El script adjunto ya contiene una serie de posts precargados para probar la apli
 
 ### _Ejecución_
 
-- Ejecutar el script de la BBDD
-
-- Server:
-
-  - cd Server
-  - node _Server/app.js_
-
-- Client:
-  - cd Client
-  - npm start
-
 **_Se aconseja realizar la siguiente ejecución:_**
-
+- Ejecutar el script de la BBDD
 - Ejecución desde la sección "**_RUN AND DEBUG_**"
-  - Seleccionar " Server + Client "
+  - Seleccionar " React + Client "
 
 # Estructura del proyecto
 
