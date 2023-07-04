@@ -69,7 +69,7 @@ responsive.
 
 ### _Dependencias_
 
-- Colocar el .env del Server en la raiz del proyecto: _Server/.env_
+- Colocar el .env del Server en la raiz del proyecto: **_Blog/.env_**
 
 - Server:
 
@@ -119,9 +119,19 @@ El script adjunto ya contiene una serie de posts precargados para probar la apli
 ### _Ejecución_
 
 **_Se aconseja realizar la siguiente ejecución:_**
+
 - Ejecutar el script de la BBDD
 - Ejecución desde la sección "**_RUN AND DEBUG_**"
   - Seleccionar " React + Client "
+
+Opción 2:
+
+- Ejecutar el script de la BBDD
+- Server
+  - desde _/Blog_: node Server/app.js
+- Client:
+  - cd Client
+  - npm start
 
 # Estructura del proyecto
 
